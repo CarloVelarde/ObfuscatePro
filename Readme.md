@@ -1,4 +1,4 @@
-# Obfuscator Pro
+# Obfuscate Pro
 ####  Developed during NSF REU program
 #### Maintainers: Carlo Velarde
 
