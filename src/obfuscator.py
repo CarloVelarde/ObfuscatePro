@@ -6,7 +6,7 @@ import pandas as pd
 from dotenv import load_dotenv
 from generate_obfuscations import generate_obfuscations
 from formatter import clean_format
-from Table import Table
+from table import Table
 from typing import Union
 from similarity import calculate_cosine_similarity, calculate_euclidean_distance
 
@@ -220,7 +220,7 @@ if __name__ == "__main__":
 
     load_dotenv()
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-    obfuscator = Obfuscator(GOOGLE_API_KEY)
+    obfuscator = Obfuscator(GOOGLE_API_KEY, model = "GEMINI")
 
     obfuscator.set_safety_level(1)
 

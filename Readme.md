@@ -1,6 +1,6 @@
 # Obfuscator Pro
-# Developed during NSF REU program
-# Maintainers: Carlo Velarde
+####  Developed during NSF REU program
+#### Maintainers: Carlo Velarde
 
 ## About
 
