@@ -1,6 +1,7 @@
 Notebook/
 venv/
 .env
+__pycache__/
 
 
 

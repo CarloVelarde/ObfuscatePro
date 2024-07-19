@@ -2,9 +2,11 @@ import time
 import os
 
 import google.generativeai as genai
+import pandas as pd
 from dotenv import load_dotenv
 from generate_obfuscations import generate_obfuscations
 from formatter import clean_format
+from Table import Table
 from typing import Union
 from similarity import calculate_cosine_similarity, calculate_euclidean_distance
 
@@ -190,7 +192,7 @@ class Obfuscator:
         similarity = 0
 
         if algo_type is None:
-            type = "COSINE_SIMILARITY"
+            algo_type = "COSINE_SIMILARITY"
 
         if algo_type == "COSINE_SIMILARITY":
             similarity = calculate_cosine_similarity(emb1, emb2)
@@ -201,7 +203,14 @@ class Obfuscator:
             similarity = calculate_euclidean_distance(emb1, emb2)
             if round_to is not None:
                 similarity = round(similarity, round_to)
+
         return similarity
+    
+
+    def table(self):
+        return Table(pd.DataFrame())
+    
+    
     
     
 
@@ -215,18 +224,27 @@ if __name__ == "__main__":
 
     obfuscator.set_safety_level(1)
 
-    prompt = obfuscator.get_prompt_template(code_snippet = "let name = 'Carlo'; console.log(name)", language = "JavaScript", obfuscation_method = "naming")
+    # prompt = obfuscator.get_prompt_template(code_snippet = "let name = 'Carlo'; console.log(name)", language = "JavaScript", obfuscation_method = "naming")
 
 
-    obfuscation = obfuscator.obfuscate(prompt = prompt, safety_settings = obfuscator.safety_settings)
+    # obfuscation = obfuscator.obfuscate(prompt = prompt, safety_settings = obfuscator.safety_settings)
 
-    embedding1 = obfuscator.embed(obfuscation)
-    time.sleep(1)
-    embedding2 = obfuscator.embed("let name = 'james'; console.log(name)")
+    # embedding1 = obfuscator.embed(obfuscation)
+    # time.sleep(1)
+    # embedding2 = obfuscator.embed("let name = 'james'; console.log(name)")
 
-    print(f'Cosine Similarity: {obfuscator.similarity(embedding1, embedding2, algo_type = "COSINE_SIMILARITY", round_to = 4)}')
+    # print(f'Cosine Similarity: {obfuscator.similarity(embedding1, embedding2, algo_type = "COSINE_SIMILARITY", round_to = 4)}')
 
-    print(f'EUCLIDEAN_DISTANCE: {obfuscator.similarity(embedding1, embedding2, algo_type = "EUCLIDEAN_DISTANCE", round_to = 4)}')
+    # print(f'EUCLIDEAN_DISTANCE: {obfuscator.similarity(embedding1, embedding2, algo_type = "EUCLIDEAN_DISTANCE", round_to = 4)}')
+
+    table = obfuscator.table()
+    table.add_column("Embeddings")
+    print(table.table.head())
+    table.save_csv("./data/temp.csv")
+    
+
+
+
 
 
     
