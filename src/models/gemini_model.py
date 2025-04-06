@@ -1,7 +1,7 @@
 from typing import Union
 
 from .base_model import BaseModel
-from src.utility.common_utility import CommonUtility
+from utility.common_utility import CommonUtility
 
 from google import genai
 from google.genai import types
@@ -83,7 +83,7 @@ class GeminiModel(BaseModel):
     def embed_code(self, code: Union[str, list], dimensionality: int = 768):
         result = self.client.models.embed_content(
             model="gemini-embedding-exp-03-07",
-            content=code,
+            contents=code,
             config=types.EmbedContentConfig(
                 task_type="retrieval_document",
                 title="Embedding of single string",

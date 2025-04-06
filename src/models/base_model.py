@@ -4,7 +4,7 @@ from typing import Union
 import pandas as pd
 
 from table import Table
-from src.utility.common_utility import CommonUtility
+from utility.common_utility import CommonUtility
 
 
 class BaseModel:
