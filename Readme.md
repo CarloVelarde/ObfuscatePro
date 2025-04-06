@@ -30,9 +30,9 @@ _When the virtual enviroment is installed and activated please install the requi
 
 `pip install -r requirements.txt`
 
-### Setup Program
+#### Run Program
 
-This utility works as objects. Each model (GPT, GEMINI) has its own class. To set up you can do
+This utility has an object oriented design. Each model (GPT, GEMINI) has its own class. To set up you can do:
 
 ```python
 from models.gemini_model import GeminiModel
