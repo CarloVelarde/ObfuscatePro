@@ -1,7 +1,7 @@
 from typing import Union
 
 from .base_model import BaseModel
-from utility.CommonUtility import CommonUtility
+from src.utility.common_utility import CommonUtility
 
 from google import genai
 from google.genai import types
